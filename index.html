@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Casa de la Pizza</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff3df;
+            color: #3b1f12;
+        }
+
+
+        /* =========================
+           ENCABEZADO
+        ========================= */
+
+        header {
+            background: linear-gradient(135deg, #e85c0c, #f47721);
+            color: white;
+            text-align: center;
+            padding: 45px 20px 55px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        header img {
+            width: 125px;
+            height: 125px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 19px;
+            opacity: 0.95;
+        }
+
+
+        /* =========================
+           BOTONES PRINCIPALES
+        ========================= */
+
+        .botones-header {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton-menu {
+            background: white;
+            color: #e85c0c;
+        }
+
+        .boton-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .boton:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+
+        /* =========================
+           BIENVENIDA
+        ========================= */
+
+        .bienvenida {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .bienvenida h2 {
+            color: #d94d0b;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .bienvenida p {
+            color: #6b4a3a;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PIZZAS DESTACADAS
+        ========================= */
+
+        .destacadas {
+            max-width: 1150px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .destacadas h2 {
+            text-align: center;
+            color: #d94d0b;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .pizza-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .pizza-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+            transition: 0.3s;
+        }
+
+        .pizza-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .pizza-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .pizza-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pizza-info h3 {
+            color: #e85c0c;
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .pizza-info p {
+            color: #795548;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .ver-menu {
+            display: inline-block;
+            background: #e85c0c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .ver-menu:hover {
+            background: #d94d0b;
+        }
+
+
+        /* =========================
+           LLAMADO A PEDIR
+        ========================= */
+
+        .pedido {
+            background: linear-gradient(135deg, #e85c0c, #f47721);
+            color: white;
+            text-align: center;
+            padding: 45px 20px;
+            margin-top: 60px;
+        }
+
+        .pedido h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .pedido p {
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .pedido a {
+            display: inline-block;
+            background: white;
+            color: #e85c0c;
+            padding: 13px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .pedido a:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           INFORMACIÓN DEL NEGOCIO
+        ========================= */
+
+        .info-negocio {
+            padding: 60px 20px;
+            background: #fff3df;
+            text-align: center;
+        }
+
+        .info-negocio h2 {
+            color: #d94d0b;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .subtitulo {
+            color: #795548;
+            margin-bottom: 35px;
+        }
+
+        .info-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px 18px;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-icono {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            color: #e85c0c;
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #795548;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .info-card strong {
+            color: #d94d0b;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           BOTONES INFO
+        ========================= */
+
+        .info-btn {
+            display: inline-block;
+            background: #e85c0c;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .info-btn:hover {
+            background: #d94d0b;
+            transform: scale(1.03);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20bd5a;
+        }
+
+
+        /* =========================
+           REDES SOCIALES
+        ========================= */
+
+        .redes {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .red-social {
+            display: block;
+            text-decoration: none;
+            color: #e85c0c;
+            background: #fff3df;
+            padding: 9px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .red-social:hover {
+            background: #e85c0c;
+            color: white;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #e85c0c;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+        }
+
+        footer p {
+            margin: 6px;
+        }
+
+
+        /* =========================
+           WHATSAPP FLOTANTE
+        ========================= */
+
+        .whatsapp-flotante {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+
+            width: 60px;
+            height: 60px;
+
+            background: #25D366;
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+            font-size: 30px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+
+            z-index: 100;
+
+            transition: 0.3s;
+        }
+
+        .whatsapp-flotante:hover {
+            transform: scale(1.1);
+        }
+
+
+        /* =========================
+           ADAPTACIÓN PARA TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .pizza-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           ADAPTACIÓN PARA CELULAR
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 35px 15px 45px;
+            }
+
+            header img {
+                width: 100px;
+                height: 100px;
+            }
+
+            header h1 {
+                font-size: 29px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .botones-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .boton {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .bienvenida h2,
+            .destacadas h2,
+            .info-negocio h2 {
+                font-size: 27px;
+            }
+
+            .pizza-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pizza-card img {
+                height: 220px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .info-card {
+                padding: 22px 15px;
+            }
+
+            .pedido h2 {
+                font-size: 26px;
+            }
+
+            .whatsapp-flotante {
+                width: 55px;
+                height: 55px;
+                right: 15px;
+                bottom: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
+    <header>
+
+        <img src="logo.png" alt="Logo La Casa de la Pizza">
+
+        <h1>🍕 La Casa de la Pizza</h1>
+
+        <p>El sabor que siempre quieres repetir</p>
+
+        <div class="botones-header">
+
+            <a href="menu.html" class="boton boton-menu">
+                🍕 Ver menú
+            </a>
+
+            <a
+                href="https://wa.me/51982710420"
+                target="_blank"
+                class="boton boton-whatsapp">
+                📲 Pedir ahora
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         BIENVENIDA
+    ========================== -->
+
+    <section class="bienvenida">
+
+        <h2>¡Bienvenidos a La Casa de la Pizza! 🍕</h2>
+
+        <p>
+            Disfruta nuestras pizzas y bebidas preparadas para que
+            cada momento tenga un sabor especial. Elige tu pizza
+            favorita y haz tu pedido fácilmente por WhatsApp.
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         PIZZAS DESTACADAS
+    ========================== -->
+
+    <section class="destacadas">
+
+        <h2>🍕 Nuestras pizzas</h2>
+
+        <div class="pizza-grid">
+
+
+            <!-- HAWAIANA -->
+
+            <div class="pizza-card">
+
+                <img
+                    src="fotos/Hawaiana.JPG"
+                    alt="Pizza Hawaiana">
+
+                <div class="pizza-info">
+
+                    <h3>Hawaiana</h3>
+
+                    <p>
+                        Jamón y piña.
+                    </p>
+
+                    <a href="menu.html" class="ver-menu">
+                        Ver menú
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CASA MIX -->
+
+            <div class="pizza-card">
+
+                <img
+                    src="fotos/Casa-Mix.JPG"
+                    alt="Pizza Casa Mix">
+
+                <div class="pizza-info">
+
+                    <h3>Casa Mix</h3>
+
+                    <p>
+                        Una deliciosa combinación de ingredientes.
+                    </p>
+
+                    <a href="menu.html" class="ver-menu">
+                        Ver menú
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MARGARITA -->
+
+            <div class="pizza-card">
+
+                <img
+                    src="fotos/Margarita.JPG"
+                    alt="Pizza Margarita">
+
+                <div class="pizza-info">
+
+                    <h3>Margarita</h3>
+
+                    <p>
+                        Una clásica pizza para disfrutar.
+                    </p>
+
+                    <a href="menu.html" class="ver-menu">
+                        Ver menú
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PEDIDO
+    ========================== -->
+
+    <section class="pedido">
+
+        <h2>🍕 ¿Ya sabes cuál quieres?</h2>
+
+        <p>
+            Mira nuestro menú y haz tu pedido directamente por WhatsApp.
+        </p>
+
+        <a
+            href="https://wa.me/51982710420"
+            target="_blank">
+            📲 Pedir por WhatsApp
+        </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         INFORMACIÓN DEL NEGOCIO
+    ========================== -->
+
+    <section class="info-negocio">
+
+        <h2>📍 Visítanos</h2>
+
+        <p class="subtitulo">
+            Encuéntranos o contáctanos para realizar tu pedido
+        </p>
+
+
+        <div class="info-grid">
+
+
+            <!-- DIRECCIÓN -->
+
+            <div class="info-card">
+
+                <div class="info-icono">
+                    📍
+                </div>
+
+                <h3>Dirección</h3>
+
+                <p>
+                    Pasaje El Paraíso - Samaira<br>
+                    Puerto Maldonado
+                </p>
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Pasaje%20El%20Paraiso%20Samaira%20Puerto%20Maldonado"
+                    target="_blank"
+                    class="info-btn">
+                    📍 Ver ubicación
+                </a>
+
+            </div>
+
+
+
+            <!-- HORARIO -->
+
+            <div class="info-card">
+
+                <div class="info-icono">
+                    🕐
+                </div>
+
+                <h3>Horario</h3>
+
+                <p>
+                    Todos los días
+                </p>
+
+                <strong>
+                    5:30 p. m. - 11:00 p. m.
+                </strong>
+
+            </div>
+
+
+
+            <!-- WHATSAPP -->
+
+            <div class="info-card">
+
+                <div class="info-icono">
+                    📲
+                </div>
+
+                <h3>Pedidos</h3>
+
+                <p>
+                    Haz tu pedido directamente por WhatsApp
+                </p>
+
+                <a
+                    href="https://wa.me/51982710420"
+                    target="_blank"
+                    class="info-btn whatsapp-btn">
+                    📲 Pedir por WhatsApp
+                </a>
+
+            </div>
+
+
+
+            <!-- REDES -->
+
+            <div class="info-card">
+
+                <div class="info-icono">
+                    📱
+                </div>
+
+                <h3>Redes sociales</h3>
+
+                <p>
+                    Síguenos y descubre nuestras novedades
+                </p>
+
+                <div class="redes">
+
+                    <!-- CAMBIAR # POR LOS ENLACES REALES -->
+
+                    <a
+                       
+    href="https://www.facebook.com/share/19StQaLbq1/"
+    target="_blank"
+    class="red-social">
+    📘 Facebook
+</a>
+                    </a>
+                    <a
+                       
+    href="https://www.tiktok.com/@la.casa.de.la.pizza.pem?is_from_webapp=1&sender_device=pc"
+    target="_blank"
+    class="red-social">
+    🎵 TikTok
+</a><a
+    href="https://www.instagram.com/la_casa_de_la_pizza_1245?stkn=cmppem5wYnhsYzR2"
+    target="_blank"
+    class="red-social">
+    📸 Instagram
+</a>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            <strong>🍕 La Casa de la Pizza</strong>
+        </p>
+
+        <p>
+            El sabor que siempre quieres repetir
+        </p>
+
+        <p>
+            📍 Pasaje El Paraíso - Samaira, Puerto Maldonado
+        </p>
+
+        <p>
+            🕐 5:30 p. m. - 11:00 p. m.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         WHATSAPP FLOTANTE
+    ========================== -->
+
+    <a
+        href="https://wa.me/51982710420"
+        target="_blank"
+        class="whatsapp-flotante"
+        title="Pedir por WhatsApp">
+        💬
+    </a>
+
+
+</body>
+</html>
